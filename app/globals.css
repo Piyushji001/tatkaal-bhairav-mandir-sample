@@ -442,8 +442,8 @@ p { margin: 0; }
 .livediya button { background: none; border: 0; cursor: pointer; padding: 0; border-radius: 50%; position: relative; }
 .livediya button::before { content: ""; position: absolute; left: 50%; top: 10%; width: 260px; height: 260px; margin: -60px 0 0 -130px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,176,46,.55), rgba(255,176,46,0)); opacity: 0; transform: scale(.4); transition: opacity .6s, transform .6s; pointer-events: none; }
 .livediya.is-lit button::before { opacity: 1; transform: scale(1); animation: glowPulse 2.4s ease-in-out infinite alternate; }
-.livediya__flame { transform-origin: 60px 100px; transform: translate(60px, 60px) scale(0); transition: transform .5s cubic-bezier(.3,1.6,.5,1); }
-.livediya.is-lit .livediya__flame { transform: translate(60px, 60px) scale(1); animation: flame 1s ease-in-out infinite alternate; }
+.livediya__flame { transform-box: fill-box; transform-origin: 50% 100%; transform: scale(0); transition: transform .5s cubic-bezier(.3,1.6,.5,1); }
+.livediya.is-lit .livediya__flame { transform: scale(1); animation: flame 1s ease-in-out infinite alternate; }
 .livediya__text { display: flex; flex-direction: column; font-size: 14px; color: #f4dcd3; }
 .livediya__text strong { color: #fff; font-size: 16px; }
 .livediya__text span { opacity: .8; }

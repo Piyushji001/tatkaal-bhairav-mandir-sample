@@ -26,9 +26,11 @@ export default function LiveDiya() {
     <div className={`livediya ${on ? "is-lit" : ""}`}>
       <button onClick={() => setLit(!lit)} aria-pressed={on} aria-label={on ? "Blow out the diya" : "Light a diya"}>
         <svg viewBox="0 0 120 110" width="120" height="110" aria-hidden="true">
-          <g className="livediya__flame" transform="translate(60 60)">
-            <path d="M0-42C14-22 18-8 0 6-18-8-14-22 0-42z" fill="url(#lf)" />
-            <path d="M0-22C6-12 7-6 0 0-7-6-6-12 0-22z" fill="#fffbe0" />
+          <g transform="translate(60 58)">
+            <g className="livediya__flame">
+              <path d="M0-42C14-22 18-8 0 6-18-8-14-22 0-42z" fill="url(#lf)" />
+              <path d="M0-22C6-12 7-6 0 0-7-6-6-12 0-22z" fill="#fffbe0" />
+            </g>
           </g>
           <path d="M8 62h104c-3 26-22 42-52 42S11 88 8 62z" fill="#b5532a" stroke="#6e2a12" strokeWidth="2" />
           <path d="M8 62h104" stroke="#e0905a" strokeWidth="3" />
