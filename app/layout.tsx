@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Ambient from "@/components/Ambient";
+import Cursor from "@/components/Cursor";
+import Lightbox from "@/components/Lightbox";
 import MobileBar from "@/components/MobileBar";
 import { photos, temple } from "@/data/temple";
 import "./globals.css";
@@ -38,8 +41,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: "try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}" }} />
+        <link rel="preload" as="image" href={photos.hero.src} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
@@ -49,10 +54,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <a href="#main" className="skip">Skip to content</a>
+        <Ambient />
         <Header />
         <main id="main">{children}</main>
         <Footer />
         <MobileBar />
+        <Lightbox />
+        <Cursor />
       </body>
     </html>
   );

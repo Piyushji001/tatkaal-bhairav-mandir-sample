@@ -1,4 +1,8 @@
 import Link from "next/link";
+import AartiThali from "@/components/AartiThali";
+import Yantra from "@/components/Yantra";
+import SacredOrb from "@/components/SacredOrb";
+import TempleBell from "@/components/TempleBell";
 import Photo from "@/components/Photo";
 import { IconShare } from "@/components/Icons";
 import { OpenStatus, TimingsTable } from "@/components/Timings";
@@ -13,12 +17,13 @@ export default function Home() {
       {/* Hero */}
       <section className="hero">
         <div className="container hero__grid">
+          <Yantra className="hero__yantra" />
           <div className="hero__photo arch">
-            <Photo {...photos.hero} />
+            <Photo {...photos.hero} priority />
           </div>
           <div className="hero__text">
-            <p className="hero__hi">{temple.jaikara}</p>
-            <h1>{temple.nameEn}</h1>
+            <p className="hero__hi"><span className="diya" aria-hidden="true" />{temple.jaikara}</p>
+            <h1 className="shine">{temple.nameEn}</h1>
             <p className="hi" style={{ fontSize: 26, color: "var(--muted)" }}>{temple.nameHi}</p>
             <p className="hero__intro">{temple.intro}</p>
             <OpenStatus />
@@ -37,6 +42,26 @@ export default function Home() {
       </section>
 
       <div className="jaali" aria-hidden="true" />
+
+      {/* Mantra marquee */}
+      <div className="marquee" aria-hidden="true">
+        <div className="marquee__track">
+          {Array.from({ length: 8 }, (_, i) => <span key={i} className="hi">॥ जय बाबा भैरवनाथ ॥ <i>✦</i> तत्काल कृपा <i>✦</i></span>)}
+        </div>
+      </div>
+
+      {/* Interactive sphere + bell */}
+      <section className="band band--lac cosmos">
+        <div className="container cosmos__grid">
+          <div className="cosmos__text">
+            <p className="kicker">दिव्य चक्र</p>
+            <h2>Turn the sacred wheel</h2>
+            <p>Drag the glowing sphere to spin it, click it to send a wave of light through it, and ring the bell as devotees do at the doorway.</p>
+            <TempleBell />
+          </div>
+          <SacredOrb />
+        </div>
+      </section>
 
       {/* Story — only shows once the TODOs in data/temple.ts are filled in with the pujari */}
       {story.length > 0 && (
@@ -66,6 +91,20 @@ export default function Home() {
             </div>
           </div>
           <TimingsTable />
+        </div>
+      </section>
+
+      {/* Virtual aarti */}
+      <section className="band band--lac aarti">
+        <Yantra className="aarti__yantra" />
+        <div className="container aarti__grid">
+          <AartiThali />
+          <div className="aarti__text">
+            <p className="kicker">आरती</p>
+            <h2>Offer a virtual aarti</h2>
+            <p>Wave the lamp in circles over the thali, seven times as in a real aarti, and watch the light trail behind it. When you are at the mandir, the real thing is a few minutes away.</p>
+            <a className="btn btn--light" href="#timings">See aarti timings</a>
+          </div>
         </div>
       </section>
 

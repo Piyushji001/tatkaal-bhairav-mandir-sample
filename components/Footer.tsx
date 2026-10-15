@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { temple } from "@/data/temple";
+import LiveDiya from "./LiveDiya";
 import { telLink } from "@/lib/utils";
 
 export default function Footer() {
@@ -11,6 +12,7 @@ export default function Footer() {
           <p className="hi site-footer__jai">{temple.jaikara}</p>
           <p>{temple.address}</p>
         </div>
+        <LiveDiya />
         <div className="site-footer__links">
           <Link href="/book/">Book a puja</Link>
           <Link href="/vehicle-puja/">Vehicle puja</Link>

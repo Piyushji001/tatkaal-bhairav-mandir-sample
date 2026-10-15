@@ -57,3 +57,18 @@ at least 1600px on the long side, compressed to under ~400 KB each (use squoosh.
 
 Colours and fonts are CSS variables at the top of `app/globals.css`
 (Pink City: sandstone pink, gerua red, jharokha arches).
+
+## Interactive & motion features (added)
+
+- **Temple-door page transition** (`app/template.tsx`) — doors swing open on every page.
+- **Draggable 3D sacred sphere** (`components/SacredOrb.tsx`) — drag to spin, click for a ripple.
+- **Temple bell** (`components/TempleBell.tsx`) — click to swing and ring (synthesised sound).
+- **Virtual aarti thali** (`components/AartiThali.tsx`) — wave the lamp in 7 circles, light trails follow.
+- **Self-drawing Sri Yantra mandala** (`components/Yantra.tsx`) — hero + aarti backgrounds.
+- **Live footer diya** (`components/LiveDiya.tsx`) — tap to light; glows automatically during aarti time.
+- **Gallery lightbox** (`components/Lightbox.tsx`) — zoom, swipe, arrow keys, Esc.
+- **Night aarti mode** (`components/ThemeToggle.tsx`) — saved in the browser.
+- **Glowing diya cursor + petal burst** (`components/Cursor.tsx`), floating petals, scroll reveal, tilt, magnetic buttons, count-up stats (`components/Ambient.tsx`).
+- All motion respects `prefers-reduced-motion`. No extra npm dependencies.
+
+Run: `npm install && npm run dev` — build static site: `npm run build` (output in `out/`).

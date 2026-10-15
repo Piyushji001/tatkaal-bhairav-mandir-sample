@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { temple } from "@/data/temple";
+import ThemeToggle from "./ThemeToggle";
 import { IconClose, IconMenu } from "./Icons";
 
 const links = [
@@ -32,6 +33,8 @@ export default function Header() {
             </Link>
           ))}
         </nav>
+        <div className="site-header__tools">
+        <ThemeToggle />
         <button
           className="menu-btn"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -40,6 +43,7 @@ export default function Header() {
         >
           {open ? <IconClose /> : <IconMenu />}
         </button>
+        </div>
       </div>
       {open && (
         <nav className="mobile-nav" aria-label="Main">
