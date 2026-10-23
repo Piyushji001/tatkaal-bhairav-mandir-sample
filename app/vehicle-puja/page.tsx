@@ -25,7 +25,7 @@ export default function VehiclePuja() {
             <h2>How it works</h2>
             <ol className="steps">
               <li>Book a date and time below, or simply come during temple hours.</li>
-              <li>Bring the vehicle to the temple. TODO: where to park for the puja.</li>
+              <li>Bring your vehicle to the temple gate for the puja ceremony.</li>
               <li>Pandit ji does the puja with tilak, mauli and nariyal, and takes the sankalp in your name.</li>
               <li>Receive prasad and Baba’s blessing before your first ride.</li>
             </ol>

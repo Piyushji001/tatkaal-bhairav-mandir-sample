@@ -315,12 +315,19 @@ p { margin: 0; }
   .btn-row .btn { flex: 1 1 auto; }
 
   .mobile-bar {
-    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 2px;
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
     background: var(--plaster); border-top: 1px solid var(--line);
-    padding: 6px 6px calc(6px + env(safe-area-inset-bottom));
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
   }
-  .mobile-bar a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 56px; font-size: 12px; font-weight: 500; color: var(--ink); text-decoration: none; border-radius: 12px; }
+  .mobile-bar a {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+    min-height: 54px; font-size: 11px; font-weight: 500; color: var(--ink); text-decoration: none;
+    border-radius: 10px; transition: background .2s, color .2s;
+  }
+  .mobile-bar a span { white-space: nowrap; }
+  .mobile-bar a.is-active:not(.mobile-bar__main) { color: var(--link); font-weight: 700; background: rgba(158,59,49,.08); }
   .mobile-bar a.mobile-bar__main { background: var(--gerua); color: #fff; }
 }
 
@@ -489,39 +496,239 @@ p { margin: 0; }
 }
 
 /* =========================================================
-   Kundli page
+   Kundli page (Mobile & Desktop Optimized)
    ========================================================= */
-.kundli-ways { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.kundli-page { overflow-x: hidden; }
+.kundli-head { padding-bottom: 20px; }
+.kundli-head h1 { font-size: clamp(34px, 6vw, 64px); }
+.kundli-head__desc { font-size: 18px; color: var(--muted); max-width: 680px; margin-top: 10px; line-height: 1.55; }
+
+.kundli-trust {
+  display: flex; flex-wrap: wrap; gap: 8px 12px; margin-top: 16px;
+}
+.kundli-trust__item {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 14px; background: var(--plaster); border: 1px solid var(--line);
+  border-radius: 999px; font-size: 14px; font-weight: 500; color: var(--ink);
+}
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+.dot--green { background: #25d366; box-shadow: 0 0 6px rgba(37,211,102,.6); }
+
+.kundli-filter {
+  display: inline-flex; gap: 4px; padding: 4px; background: var(--plaster);
+  border: 1px solid var(--line); border-radius: 999px; margin-top: 22px;
+  max-width: 100%; overflow-x: auto;
+}
+.kundli-filter__btn {
+  border: 0; background: none; padding: 8px 18px; border-radius: 999px;
+  font: 500 14px var(--body); color: var(--ink); cursor: pointer;
+  white-space: nowrap; transition: background .2s, color .2s;
+}
+.kundli-filter__btn.is-active { background: var(--gerua); color: #fff; font-weight: 600; }
+
+.kundli-ways-band { padding-top: 12px; }
+.kundli-ways { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .kundli-card {
-  display: flex; flex-direction: column; gap: 16px;
-  padding: 36px 32px 32px; background: var(--card); border: 1px solid var(--line);
-  border-radius: var(--radius); position: relative; overflow: hidden;
+  display: flex; flex-direction: column; gap: 14px;
+  padding: 32px 28px; background: var(--card); border: 1px solid var(--line);
+  border-radius: 18px; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,.03);
+}
+.kundli-card--online { border-color: rgba(37,211,102,.35); }
+.kundli-card__header {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;
 }
 .kundli-card__badge {
-  display: inline-block; align-self: flex-start;
-  padding: 4px 16px; border-radius: 999px;
-  background: var(--gerua); color: #fff;
-  font: 500 14px var(--deva); letter-spacing: .02em;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 14px; border-radius: 999px; font: 600 13px var(--body);
 }
-.kundli-card__badge--alt { background: var(--marigold); color: var(--lac); }
-.kundli-card__sub { color: var(--muted); font-size: 16px; }
-.kundli-card .steps { margin: 8px 0 16px; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; }
+.kundli-card__badge--online {
+  background: #eaf8ee; color: #157338; border: 1px solid #c2e8cb;
+}
+.kundli-card__badge--offline {
+  background: #fdf3e2; color: #8a5700; border: 1px solid #f6deb6;
+}
+.kundli-card__tag {
+  font-size: 12.5px; color: var(--muted); background: var(--sand);
+  padding: 3px 10px; border-radius: 999px; font-weight: 500;
+}
+.kundli-card h2 { font-size: clamp(24px, 3.5vw, 32px); }
+.kundli-card__sub { color: var(--muted); font-size: 15.5px; line-height: 1.5; }
 
-.kundli-services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.kundli-steps {
+  display: flex; flex-direction: column; gap: 12px; margin: 6px 0 10px;
+}
+.kundli-step {
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.kundli-step__num {
+  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--plaster); border: 1px solid var(--line);
+  color: var(--gerua); font: 700 12px var(--body);
+  display: flex; align-items: center; justify-content: center;
+}
+.kundli-step__text {
+  font-size: 15px; color: var(--ink); line-height: 1.45; margin: 0;
+}
+
+.kundli-card__action {
+  margin-top: auto; padding-top: 14px; display: flex; flex-direction: column; gap: 8px;
+}
+.kundli-card__hint {
+  font-size: 13px; color: var(--muted); text-align: center; margin: 0;
+}
+
+/* WhatsApp styled buttons */
+.btn--whatsapp {
+  background: #1e7e34; border-color: #1e7e34; color: #fff;
+}
+.btn--whatsapp:hover {
+  background: #155d27; border-color: #155d27; color: #fff;
+}
+.btn--whatsapp-light {
+  background: #ffffff; border-color: #ffffff; color: #1e7e34; font-weight: 700;
+}
+.btn--whatsapp-light:hover {
+  background: #eaf8ee; border-color: #eaf8ee; color: #155d27;
+}
+
+/* WhatsApp template box */
+.kundli-template-box {
+  background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+  padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;
+}
+.kundli-template-box__head {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.btn--copy {
+  min-height: 42px; padding: 0 16px; font-size: 14px;
+}
+.kundli-template-box__desc { color: var(--muted); font-size: 15px; }
+.kundli-template-code {
+  background: var(--sand); border: 1px solid var(--line); border-radius: 12px;
+  padding: 16px 18px; font-family: var(--body); font-size: 15px; line-height: 1.6;
+  white-space: pre-wrap; margin: 0; color: var(--ink); word-break: break-word;
+}
+.kundli-template-box__footer { margin-top: 6px; }
+
+/* Services */
+.kundli-services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .kundli-service {
-  display: flex; flex-direction: column; gap: 6px;
-  padding: 28px 24px; background: var(--card); border: 1px solid var(--line);
-  border-radius: var(--radius); transition: transform .25s ease, box-shadow .25s ease;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 24px 20px; background: var(--card); border: 1px solid var(--line);
+  border-radius: 16px; transition: transform .25s ease, box-shadow .25s ease;
 }
-.kundli-service:hover { transform: translateY(-4px); box-shadow: 0 16px 36px -16px rgba(124,44,36,.4); }
-.kundli-service .hi { color: var(--link); font-size: 18px; }
-.kundli-service h3 { font-size: 22px; }
-.kundli-service p { color: var(--muted); font-size: 15px; }
+.kundli-service:hover { transform: translateY(-4px); box-shadow: 0 14px 32px -12px rgba(124,44,36,.35); }
+.kundli-service__head { display: flex; align-items: flex-start; gap: 12px; }
+.kundli-service__icon { font-size: 26px; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+.kundli-service__hi { font-family: var(--deva); font-size: 13.5px; color: var(--link); display: block; }
+.kundli-service h3 { font-size: 20px; }
+.kundli-service__desc { color: var(--muted); font-size: 14.5px; line-height: 1.5; margin: 0; }
+.kundli-service__link {
+  margin-top: auto; padding-top: 10px; font-size: 13.5px; font-weight: 600;
+  color: #1e7e34; display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+}
+.kundli-service__link:hover { text-decoration: underline; color: #155d27; }
 
+/* Requirements */
+.kundli-reqs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.kundli-req-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 22px 18px; display: flex; flex-direction: column; gap: 12px;
+}
+.kundli-req-card__icon {
+  width: 44px; height: 44px; border-radius: 10px; background: var(--sand);
+  color: var(--gerua); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.kundli-req-card__body { display: flex; flex-direction: column; gap: 3px; }
+.kundli-req-card__idx { font-size: 11.5px; font-weight: 700; color: var(--muted); letter-spacing: .06em; }
+.kundli-req-card__hi { font-family: var(--deva); font-size: 13px; color: var(--link); }
+.kundli-req-card h3 { font-size: 19px; }
+.kundli-req-card p { font-size: 14px; color: var(--muted); line-height: 1.45; margin: 0; }
+
+/* Night mode styling for Kundli */
+:root[data-theme="night"] .kundli-card__badge--online {
+  background: rgba(37,211,102,.15); color: #46c081; border-color: rgba(37,211,102,.3);
+}
+:root[data-theme="night"] .kundli-card__badge--offline {
+  background: rgba(232,169,59,.15); color: #ffd27a; border-color: rgba(232,169,59,.3);
+}
+:root[data-theme="night"] .kundli-template-code { background: var(--plaster); }
+:root[data-theme="night"] .kundli-service__link { color: #46c081; }
+
+/* Responsive adjustments */
 @media (max-width: 960px) {
   .kundli-ways { grid-template-columns: minmax(0, 1fr); }
   .kundli-services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kundli-reqs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* =========================================================
+   Phone Screen Optimization (< 640px)
+   ========================================================= */
 @media (max-width: 640px) {
-  .kundli-services { grid-template-columns: minmax(0, 1fr); }
+  .kundli-page .band { padding-block: 32px; }
+  .page-head.kundli-head { padding-block: 22px 14px; }
+  .kundli-head h1 { font-size: clamp(28px, 7.5vw, 36px); }
+  .kundli-head__desc { font-size: 16px; margin-top: 8px; }
+
+  .kundli-trust {
+    flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px; margin-top: 12px;
+  }
+  .kundli-trust__item { flex-shrink: 0; font-size: 12.5px; padding: 4px 10px; }
+
+  .kundli-filter {
+    width: 100%; display: flex; margin-top: 14px;
+  }
+  .kundli-filter__btn {
+    flex: 1 1 0; padding: 8px 4px; font-size: 12px; text-align: center;
+  }
+
+  .kundli-ways { gap: 16px; }
+  .kundli-card {
+    padding: 20px 16px 18px; border-radius: 16px; gap: 12px;
+  }
+  .kundli-card h2 { font-size: 24px; }
+  .kundli-card__sub { font-size: 14.5px; }
+
+  .kundli-step__text { font-size: 14px; }
+
+  .btn-row--phone-stack {
+    flex-direction: column; width: 100%; gap: 10px;
+  }
+  .btn-row--phone-stack .btn {
+    width: 100%; min-height: 48px;
+  }
+
+  .kundli-template-box {
+    padding: 18px 14px; border-radius: 14px; gap: 12px;
+  }
+  .kundli-template-code {
+    padding: 12px 14px; font-size: 13.5px;
+  }
+
+  .kundli-services {
+    grid-template-columns: minmax(0, 1fr); gap: 12px;
+  }
+  .kundli-service {
+    padding: 18px 16px; border-radius: 14px;
+  }
+  .kundli-service h3 { font-size: 19px; }
+  .kundli-service__desc { font-size: 14px; }
+
+  .kundli-reqs {
+    grid-template-columns: minmax(0, 1fr); gap: 10px;
+  }
+  .kundli-req-card {
+    flex-direction: row; align-items: flex-start; gap: 14px;
+    padding: 16px 14px; border-radius: 14px;
+  }
+  .kundli-req-card__icon {
+    width: 40px; height: 40px;
+  }
+  .kundli-req-card h3 { font-size: 17px; }
+  .kundli-req-card p { font-size: 13.5px; }
+
+  .kundli-cta-band { padding-block: 40px; }
 }
+

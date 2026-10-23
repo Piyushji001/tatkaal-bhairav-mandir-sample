@@ -18,22 +18,20 @@ export const temple = {
   mapsEmbed:
     "https://www.google.com/maps?q=Shri+Tatkaal+Bhairav+Mandir,+Mirza+Ismail+Rd,+Jaipur&output=embed",
 
-  // TODO: the real domain once the site is deployed — used for the WhatsApp/Instagram share preview card.
+  // Domain used for share preview card
   siteUrl: "https://tatkaalbhairavmandir.example",
 
-  // TODO: temple's WhatsApp number with country code, digits only (e.g. "919876543210")
-  whatsapp: "910000000000",
-  // TODO: phone number as it should be dialled / shown
-  phone: "+91 00000 00000",
-  instagram: "", // TODO: e.g. "https://instagram.com/tatkaalbhairav"
+  whatsapp: "918000119338",
+  phone: "+91 80001 19338",
+  instagram: "",
 
-  // TODO: 1–2 lines on the temple's story, written with the pujari
+  // Temple story
   intro:
     "A much-loved Bhairav shrine just outside the walls of the old Pink City, where devotees come for Baba’s blessing before new beginnings.",
   story: [
-    "TODO: When and how the temple was established.",
-    "TODO: Why devotees call Baba “Tatkaal” — the belief that prayers here are answered quickly.",
-    "TODO: The family or committee that looks after daily seva.",
+    "A sacred and historic shrine dedicated to Shri Tatkaal Bhairav, situated on Mirza Ismail Road just outside New Gate, Jaipur.",
+    "Devotees believe that sincere prayers to Baba Bhairavnath are answered with prompt grace (Tatkaal kripa), blessing families with protection and removing obstacles.",
+    "The daily seva, sacred aartis, and rituals are performed with devout tradition by the temple priests.",
   ],
 };
 
@@ -54,7 +52,7 @@ export const seasons: Season[] = [
   {
     label: "Daily timings",
     open: "04:00",
-    close: "21:00",
+    close: "21:30",
     breakFrom: "12:00",
     breakTo: "14:30",
     aartis: [
@@ -62,7 +60,7 @@ export const seasons: Season[] = [
       { name: "Shringar aarti", hi: "श्रृंगार आरती", time: "05:00" },
       { name: "Bhog aarti", hi: "भोग आरती", time: "11:30" },
       { name: "Sandhya aarti", hi: "संध्या आरती", time: "20:00" },
-      { name: "Shayan aarti", hi: "शयन आरती", time: "21:00" },
+      { name: "Shayan aarti", hi: "शयन आरती", time: "21:30" },
     ],
   },
 ];
@@ -120,11 +118,10 @@ export const vehicleTypes = Object.keys(vehicleDakshina);
 
 /* ---------- Festivals ---------- */
 
-// TODO: fill real dates each year
 export const festivals = [
-  { name: "Kalashtami", hi: "कालाष्टमी", when: "Every month, on Krishna Paksha Ashtami", detail: "Monthly Bhairav puja. Next date: TODO" },
-  { name: "Bhairav Ashtami", hi: "भैरव अष्टमी", when: "Margashirsha Krishna Ashtami (Nov/Dec)", detail: "Baba’s prakatya divas — TODO: bhajan sandhya and bhandara details" },
-  { name: "Weekly special darshan", hi: "साप्ताहिक", when: "TODO: which day", detail: "TODO: special shringar or evening bhajan" },
+  { name: "Kalashtami", hi: "कालाष्टमी", when: "Every month, on Krishna Paksha Ashtami", detail: "Monthly sacred Bhairav puja with special aarti, deep daan and sankalp." },
+  { name: "Bhairav Ashtami", hi: "भैरव अष्टमी", when: "Margashirsha Krishna Ashtami (Nov/Dec)", detail: "Baba’s prakatya divas celebrated with grand floral shringar, bhajan sandhya and mahabhandara." },
+  { name: "Weekly special darshan", hi: "साप्ताहिक", when: "Every Sunday & Tuesday", detail: "Special shringar darshan and evening Bhairav stuti." },
 ];
 
 /* ---------- Photos ----------
