@@ -12,7 +12,7 @@ export const temple = {
   nameHi: "श्री तत्काल भैरव मंदिर",
   jaikara: "॥ जय बाबा भैरवनाथ ॥",
   city: "Jaipur",
-  address: "Mirza Ismail Rd, New Gate, Kailash Puri, Jaipur, Rajasthan 302003",
+  address: "Mirza Ismail Rd, New Gate, Jaipur, Rajasthan 302003",
   addressShort: "Mirza Ismail Road, outside New Gate, Jaipur",
   mapsLink: "https://maps.app.goo.gl/7CoubkZdtqXLPgXU9",
   mapsEmbed:
@@ -35,15 +35,14 @@ export const temple = {
     "TODO: Why devotees call Baba “Tatkaal” — the belief that prayers here are answered quickly.",
     "TODO: The family or committee that looks after daily seva.",
   ],
-  googleRating: "4.8",
 };
 
 /* ---------- Timings ---------- */
 
 export type Aarti = { name: string; hi: string; time: string };
 export type Season = {
-  label: string;
-  months: number[]; // 1 = January
+  label?: string;
+  months?: number[]; // 1 = January
   open: string; // "HH:MM" 24h
   close: string;
   breakFrom?: string;
@@ -51,36 +50,19 @@ export type Season = {
   aartis: Aarti[];
 };
 
-// Opening at 4:00 AM is from Google Maps. EVERYTHING ELSE here is an example — TODO confirm.
 export const seasons: Season[] = [
   {
-    label: "Summer timings",
-    months: [4, 5, 6, 7, 8, 9],
+    label: "Daily timings",
     open: "04:00",
-    close: "22:00",
-    breakFrom: "12:30",
-    breakTo: "16:00",
+    close: "21:00",
+    breakFrom: "12:00",
+    breakTo: "14:30",
     aartis: [
-      { name: "Mangla aarti", hi: "मंगला आरती", time: "04:15" },
-      { name: "Shringar aarti", hi: "श्रृंगार आरती", time: "08:00" },
-      { name: "Bhog aarti", hi: "भोग आरती", time: "12:00" },
-      { name: "Sandhya aarti", hi: "संध्या आरती", time: "19:15" },
-      { name: "Shayan aarti", hi: "शयन आरती", time: "21:45" },
-    ],
-  },
-  {
-    label: "Winter timings",
-    months: [10, 11, 12, 1, 2, 3],
-    open: "04:00",
-    close: "21:30",
-    breakFrom: "12:30",
-    breakTo: "16:00",
-    aartis: [
-      { name: "Mangla aarti", hi: "मंगला आरती", time: "04:30" },
-      { name: "Shringar aarti", hi: "श्रृंगार आरती", time: "08:30" },
-      { name: "Bhog aarti", hi: "भोग आरती", time: "12:00" },
-      { name: "Sandhya aarti", hi: "संध्या आरती", time: "18:30" },
-      { name: "Shayan aarti", hi: "शयन आरती", time: "21:15" },
+      { name: "Mangla aarti", hi: "मंगला आरती", time: "04:00" },
+      { name: "Shringar aarti", hi: "श्रृंगार आरती", time: "05:00" },
+      { name: "Bhog aarti", hi: "भोग आरती", time: "11:30" },
+      { name: "Sandhya aarti", hi: "संध्या आरती", time: "20:00" },
+      { name: "Shayan aarti", hi: "शयन आरती", time: "21:00" },
     ],
   },
 ];

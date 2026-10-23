@@ -487,3 +487,41 @@ p { margin: 0; }
   .doors, .page-in { animation: none; display: none; } .page-in { display: block; }
   .yantra *, .hero__yantra, .aarti__yantra, .hero::before { animation: none !important; stroke-dashoffset: 0 !important; }
 }
+
+/* =========================================================
+   Kundli page
+   ========================================================= */
+.kundli-ways { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.kundli-card {
+  display: flex; flex-direction: column; gap: 16px;
+  padding: 36px 32px 32px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); position: relative; overflow: hidden;
+}
+.kundli-card__badge {
+  display: inline-block; align-self: flex-start;
+  padding: 4px 16px; border-radius: 999px;
+  background: var(--gerua); color: #fff;
+  font: 500 14px var(--deva); letter-spacing: .02em;
+}
+.kundli-card__badge--alt { background: var(--marigold); color: var(--lac); }
+.kundli-card__sub { color: var(--muted); font-size: 16px; }
+.kundli-card .steps { margin: 8px 0 16px; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; }
+
+.kundli-services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.kundli-service {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 28px 24px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); transition: transform .25s ease, box-shadow .25s ease;
+}
+.kundli-service:hover { transform: translateY(-4px); box-shadow: 0 16px 36px -16px rgba(124,44,36,.4); }
+.kundli-service .hi { color: var(--link); font-size: 18px; }
+.kundli-service h3 { font-size: 22px; }
+.kundli-service p { color: var(--muted); font-size: 15px; }
+
+@media (max-width: 960px) {
+  .kundli-ways { grid-template-columns: minmax(0, 1fr); }
+  .kundli-services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .kundli-services { grid-template-columns: minmax(0, 1fr); }
+}

@@ -10,6 +10,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/book/", label: "Book a puja" },
   { href: "/vehicle-puja/", label: "Vehicle puja" },
+  { href: "/kundli/", label: "Kundli" },
   { href: "/visit/", label: "Visit" },
   { href: "/gallery/", label: "Gallery" },
 ];

@@ -40,8 +40,8 @@ export function nowInIndia(d = new Date()) {
   return { month: get("month"), minutes: (get("hour") % 24) * 60 + get("minute") };
 }
 
-export function currentSeason(month: number): Season {
-  return seasons.find((s) => s.months.includes(month)) ?? seasons[0];
+export function currentSeason(month?: number): Season {
+  return (month !== undefined && seasons.find((s) => s.months?.includes(month))) || seasons[0];
 }
 
 export type Status = { open: boolean; text: string };

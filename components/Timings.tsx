@@ -24,27 +24,18 @@ export function OpenStatus() {
 }
 
 export function TimingsTable() {
-  const [idx, setIdx] = useState(0);
   const [minutes, setMinutes] = useState<number | null>(null);
 
   useEffect(() => {
-    const { month, minutes } = nowInIndia();
-    setIdx(Math.max(0, seasons.indexOf(currentSeason(month))));
+    const { minutes } = nowInIndia();
     setMinutes(minutes);
   }, []);
 
-  const season = seasons[idx];
+  const season = seasons[0];
   const upcoming = minutes !== null ? nextAarti(season, minutes) : null;
 
   return (
     <div className="timings">
-      <div className="season-tabs" role="tablist" aria-label="Season">
-        {seasons.map((s, i) => (
-          <button key={s.label} role="tab" aria-selected={i === idx} className={i === idx ? "is-active" : ""} onClick={() => setIdx(i)}>
-            {s.label}
-          </button>
-        ))}
-      </div>
       <dl className="timings__hours">
         <div><dt>Temple opens</dt><dd>{fmt(season.open)}</dd></div>
         {season.breakFrom && season.breakTo && (
